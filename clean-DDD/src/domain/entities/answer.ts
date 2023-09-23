@@ -1,18 +1,21 @@
 import { randomUUID } from "crypto"
 
+interface AnswerProps {
+  content: string
+  authorId: string
+  questionId: string
+}
+
 export class Answer {
   public id: string
   public content: string
+  public authorId: string
+  public questionId: string
 
-  /**
-   * Creates a new instance of the class.
-   *
-   * @param {string} title - The title of the instance.
-   * @param {string} content - The content of the instance.
-   * @param {string} [id] - The optional ID of the instance.
-   */
-  constructor(content: string, id?: string) {
+  constructor(props: AnswerProps, id?: string) {
+    this.content = props.content
+    this.authorId = props.authorId
+    this.questionId = props.questionId
     this.id = id ?? randomUUID()
-    this.content = content
   }
 }
